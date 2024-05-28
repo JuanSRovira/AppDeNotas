@@ -5,7 +5,6 @@ const {getTareas, createTarea,  updateTarea, deleteTarea} = require('../controll
 //Obtener tarea
 router.get('/', getTareas)
 
-
 //Crear tarea
 router.post('/', createTarea)
 
