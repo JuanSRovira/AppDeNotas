@@ -23,14 +23,34 @@ const createTarea = asyncHandler( async (req, res) => {
 })
 
 const updateTarea =asyncHandler( async (req, res) => {
+
+    const tarea = await Tarea.findBy(req.params.id)
+    if(!tarea) {
+        res.status(400)
+        throw new Error("La tarea no fue encontrada")
+    }
+
+    const updateTarea = await Tarea.findByIdAndUpdate(req.params.id, req.body, {new:true})
+
+    res.status(200).json(updateTarea)
+
     res.status(201).json({
         msg: `La tarea con el id ${req.params.id} se ha actualizado`
     })
 })
 
 const deleteTarea =asyncHandler( async (req, res) => {
+
+    const tarea = await Tarea.findById(req.params.id)
+    if(!tarea) {
+        res.status(400)
+        throw new Error("La tarea no fue encontrada")
+    }
+
+    const deleteTarea = await Tarea.findByIdAndUpdate(req.params.id, req.body, {new:true})
+
     res.status(201).json({
-        msg: `La tarea con el id ${req.params.id} se ha eliminado`
+        msg: `La tarea con el id ${req.params.id} se ha eliminado`, deleteTarea
     })
 })
 
