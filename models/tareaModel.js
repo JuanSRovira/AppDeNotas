@@ -6,9 +6,6 @@ const tareaSchema = mongoose.Schema({
         required: true,
         ref: 'User'
     },
-    titulo: {
-        type: String,
-    },
     texto: {
         type: String
     }
