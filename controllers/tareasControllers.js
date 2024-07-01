@@ -59,14 +59,13 @@ const deleteTarea =asyncHandler( async (req, res) => {
         res.status(401)
         throw new Error ('Acceso no autorizado')
     } else {
-        //BORRADO LOGICO
+                //BORRADO LOGICO
         //const deleteTarea = await Tarea.findByIdAndUpdate(req.params.id, req.body, {new:true})
         //BORRADO TOTAL
+
         await Tarea.deleteOne(tarea)
     
-        res.status(201).json({
-            msg: `La tarea con el id ${req.params.id} se ha eliminado`, deleteTarea
-        })        
+        res.status(200).json({ id: req.params.id})        
     }
 })
 
